@@ -1,12 +1,13 @@
 from signalTeste import *
 
 def plotaonda(tempo, onda):
-	x,y = [tempo,onda]
-	plt.figure()
+	x,y = [tempo, onda]
+
 	plt.plot(x, np.abs(y))
-	plt.xlim([min(x),max(x)])
-	plt.ylim([min(np.abs(y)),max(np.abs(y))])
-	plt.title('Fourier')
+
+	plt.xlim([0.012, 0.018])	
+	plt.ylim([min(np.abs(y)), max(np.abs(y))])
+	plt.title('Onda de Saida')
 	plt.show()
 
 class comunicador():
@@ -23,6 +24,7 @@ class comunicador():
 			8 : [852, 1366],
 			9 : [852, 1477],
 			0 : [941, 1366]}
+
 		self.sinal = signalMeu()
 		self.amplitude = 1
 		self.fs = 44100
