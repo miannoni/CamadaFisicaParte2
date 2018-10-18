@@ -1,5 +1,14 @@
 from signalTeste import *
 
+def plotaonda(tempo, onda):
+	x,y = [tempo,onda]
+	plt.figure()
+	plt.plot(x, np.abs(y))
+	plt.xlim([min(x),max(x)])
+	plt.ylim([min(np.abs(y)),max(np.abs(y))])
+	plt.title('Fourier')
+	plt.show()
+
 class comunicador():
 
 	def __init__(self):
@@ -17,7 +26,7 @@ class comunicador():
 		self.sinal = signalMeu()
 		self.amplitude = 1
 		self.fs = 44100
-		self.time = 0.5
+		self.time = 1
 
 	def sinalDigito(self, digito):
 
@@ -34,16 +43,10 @@ class comunicador():
 	def comunica(self, digito):
 		tempo, onda = self.sinalDigito(digito)
 
+		plotaonda(tempo, onda)
+
 		sd.play(onda, self.fs)
 
+		sd.wait()
+
 		return (tempo, onda)
-
-
-def plotaonda(tempo, onda):
-	x,y = [tempo,onda]
-	plt.figure()
-	plt.plot(x, np.abs(y))
-	plt.xlim([min(x),max(x)])
-	plt.ylim([min(np.abs(y)),max(np.abs(y))])
-	plt.title('Fourier')
-	plt.show()
