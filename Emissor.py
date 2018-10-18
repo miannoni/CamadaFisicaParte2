@@ -13,9 +13,3 @@ com = comunicador()
 tempo, onda = com.comunica(1)
 
 plotaonda(tempo, onda)
-
-tempo, onda = com.sinalDigito(1)
-
-sd.play(onda, 44100)
-
-plotaonda(tempo, onda)
