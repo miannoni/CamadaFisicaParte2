@@ -1,4 +1,5 @@
 from signalTeste import *
+from apoioemissor import *
 import numpy as np
 import sounddevice as sd
 import matplotlib.pyplot as plt
@@ -7,20 +8,8 @@ import time
 import pickle
 import peakutils
 
-sinal = signalMeu()
+com = comunicador()
 
-freq = 1209
-amplitude = 1
-fs = 44100
-time = 
-tempo, onda = sinal.generateSin(freq, amplitude, time, fs)
+tempo, onda = com.sinalDigito(1)
 
-x,y = [tempo,onda]
-
-plt.figure()
-plt.plot(x, np.abs(y))
-# plt.axis([min(x),max(x), min(np.abs(y)), max(np.abs(y))])
-plt.xlim([min(x),max(x)])
-plt.ylim([min(np.abs(y)),max(np.abs(y))])
-plt.title('Fourier')
-plt.show()
+plotaonda(tempo, onda)
