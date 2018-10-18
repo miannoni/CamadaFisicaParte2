@@ -17,7 +17,7 @@ class comunicador():
 		self.sinal = signalMeu()
 		self.amplitude = 1
 		self.fs = 44100
-		self.time = 0.001
+		self.time = 0.5
 
 	def sinalDigito(self, digito):
 
@@ -28,6 +28,13 @@ class comunicador():
 		tempo, onda2 = self.sinal.generateSin(freq2, self.amplitude, self.time, self.fs)
 
 		onda = np.add(np.array(onda), np.array(onda2))
+
+		return (tempo, onda)
+
+	def comunica(self, digito):
+		tempo, onda = self.sinalDigito(digito)
+
+		sd.play(onda, self.fs)
 
 		return (tempo, onda)
 
